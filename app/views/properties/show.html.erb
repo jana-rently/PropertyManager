@@ -35,16 +35,16 @@
 	  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 	}
   .leftpad{
-    margin-left:30%;
-    width:50%;
+    margin-left:35%;
+    width:30%;
   }
 </style>
 
 </head>
 <body>
  <ul>
-  <li><%=link_to "back",viewprop_path, class:"active"%></li>
-  <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete %></li>
+  <li><%=link_to "back",view_prop_path,style:'color:#FFFFFF'%></li>
+  <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete,style:'color:#FFFFFF' %></li>
   </ul>
 <br><br>
 <div class="center">
@@ -57,10 +57,10 @@ Welcome <%=@renter.name%>
 <%@rentercheckflag=0%>
 <% if @property.flag == 0%>
 <%if @approachflag == 1%>
-<div class="alignment" >your Approaches has been updated</div>
+<div class="alignment" >Your Application has been submitted</div>
 <%else%>
 <div class="sidebtn">
-<%= link_to "Approach Property", addapproach_path(@property)%></div>
+<%= link_to "Apply  Property", addapproach_path(@property)%></div>
 <%end%>
 <%else%>
 <%if @check.renter_id == current_renter.id %>
@@ -82,7 +82,7 @@ Still you can add it to your wishlist</div>
     <td><%= @property.name%></td>
   </tr>
   <tr>
-    <th>Property rent:</th>
+    <th>Property rent($):</th>
     <td><%= @property.rent%></td>
   </tr>
   <tr>

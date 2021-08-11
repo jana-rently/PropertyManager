@@ -9,8 +9,12 @@
 </style>
 
 <ul>
-  <li><%= link_to "Addproperties", addprop_path(@agent) ,class:"active"%></li>
-   <li style="float:right"><%= link_to "logout", destroy_agent_session_path, method: :delete %></li>
+  <li><%= link_to "Addproperties", addprop_path(@company) ,style:'color:white'%></li>
+   <%if @agent.role.eql?('Admin') %>
+   <li><%= link_to "Add Agents",addagents_path,style:'color:white'%><li>
+   <li><%= link_to "View Agents",viewagents_path,style:'color:white'%><li>
+   <%end%>
+   <li style="float:right"><%= link_to "logout", destroy_agent_session_path, method: :delete,style:'color:white' %></li>
 </ul>
 
 
@@ -20,15 +24,16 @@
 
 	<div class="login-form"> <div class="sign-in-htm">
 	
-	<% @agent.properties.each do |prop|%>
+	<% @company.properties.each do |prop|%>
 		<div class="clearfix">
 		<div class="box">
-		<button class="btn1"> <%=link_to "Edit" ,edit_property_path(prop)%> </button>
- 		<button class="btn"><%=link_to "Applications", viewapproach_path(prop)%></button>
+		<button class="btn1"> <%=link_to "Edit" ,edit_property_path(prop),style:'color:white'%> </button>
+ 		<% if current_agent.role.eql?('Admin')%>
+		 <button class="btn"><%=link_to "Applications", viewapproach_path(prop),style:'color:white'%></button>
 
 		<button class="btnr" ><%= link_to 'Delete', property_path(prop),
-        	            method: :delete, data: { confirm: 'Are you sure?' } %> </button> 
-
+        	            method: :delete, data: { confirm: 'Are you sure?' },style:'color:white' %> </button> 
+<%end%>
 		<h2 class="propname"><%= prop.name%><br></h2>
 		
 
@@ -37,17 +42,17 @@
    <%end%>
    <br><br>
    		<span class="textd">Property Location :</span>
-		<span class="border"><%= prop.address %></span><br>
+		<span class="borde"><%= prop.address %></span><br>
 		<div><span class="textd" >Rent($)</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;<span class="textd">Bedrooms</span></div>
 		<div class="rent"><%= prop.rent%></div>
 
 		<div class="bedrooms"><%= prop.bedrooms%></div><br><br>
 		<span class="textd">City</span>
-		<div class="border"><%=prop.city%></div>
-		
+		<div class="borde"><%=prop.city%></div>
+		<br>
 		<span class="textd" >About Property</span>
 
-		<span class="border"><%= prop.description%></span>
+		<span class="borde"><%= prop.description%></span>
 			</div>
 		<div>
 		<% end %>

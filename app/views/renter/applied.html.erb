@@ -17,10 +17,7 @@
   cursor: pointer;
   display: inline-block;}
   .center{
-    color:
-  }
-  .center{
-	  font-size:18px;
+    font-size:16px;
   }
   </style>
   <ul>
@@ -33,17 +30,16 @@
 <br>
 <h1 class="center"> Welcome <%=@renter.name%></h1>
 
-<h3 class="center"><i>Your rented lists</i></h3>
+<h1 class="center"><i>Properties that you applied</i></h1>
 
-<% @properties.each do |prop|%>
+<% @propertylist.each do |prop|%>
 
 <div class="clearfix">
 <div class="box">
 
 
 <% prop = Property.find(prop.property_id)%>
-	
-<%=link_to "unrent", unrent_path(prop), class:"btns"%>
+
 	<%= link_to "View property", viewproperty_path(prop),class:"btn2"%>
 	
 		<h2 class="propname"><%= prop.name%><br></h2>

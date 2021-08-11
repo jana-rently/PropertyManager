@@ -9,7 +9,9 @@ body{
 	font:600 16px/18px 'Open Sans',sans-serif;
   background-color: ; 
 }
-
+.login-wrap{
+  margin-top:4%;
+}
 .btnr{
 border: none;
   background-color: ;
@@ -21,8 +23,12 @@ border: none;
   display: inline-block;
   margin-left:12%;
 }
-
-
+.label,.input{
+  margin-left:4%;
+}
+.input{
+  width:90%;
+}
 .btn {
   border: none;
   background-color: blue;
@@ -41,11 +47,12 @@ border: none;
 
 </head>
 <body>
+<h1 class="heading"> Add Property</h1>
 <div class="login-wrap">
 
 	<div class="login-form">
 	<div class="sign-in-htm">
- <h1 class="heading"> Properties Page</h1>
+ <br><br>
 
  
 <%= form_for :@properties, url:'/properties'   do |f| %>

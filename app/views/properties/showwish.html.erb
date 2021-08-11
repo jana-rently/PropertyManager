@@ -17,11 +17,14 @@
   color:white;
   cursor: pointer;
   display: inline-block;}
+  .center{
+	  font-size:18px;
+  }
 </style>
 
   <ul>
-  <li><%=link_to "back",viewprop_path, class:"active"%></li>
-  <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete %></li>
+  <li><%=link_to "back",view_prop_path, style:'color:#FFFFFF'%></li>
+  <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete,style:'color:#FFFFFF' %></li>
   </ul>
 
 
@@ -53,17 +56,17 @@
    <%end%>
    		<br><br>
    		<span class="textd">Property Location :</span>
-		<span class="border"><%= prop.address %></span><br>
+		<span class="borde"><%= prop.address %></span><br>
 		<div><span class="textd" >Rent($)</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;<span class="textd">Bedrooms</span></div>
 		<div class="rent"><%= prop.rent%></div>
 
 		<div class="bedrooms"><%= prop.bedrooms%></div><br><br>
 		<span class="textd">City</span>
-		<div class="border"><%=prop.city%></div>
-		
+		<div class="borde"><%=prop.city%></div>
+		<br>
 		<span class="textd" >About Property</span>
 
-		<span class="border"><%= prop.description%></span>
+		<span class="borde"><%= prop.description%></span>
 			</div>
 		<div>
 		<% end %>

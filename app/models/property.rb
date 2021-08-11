@@ -2,7 +2,9 @@ class Property < ApplicationRecord
     has_many :reviews, dependent: :destroy
     has_many :approaches, dependent: :destroy
     has_many_attached :images
+    belongs_to :company
     validate :image_type
+    
 def thumbnail input
     return self.images[input].variant(resize: '300X250>').processed
 end

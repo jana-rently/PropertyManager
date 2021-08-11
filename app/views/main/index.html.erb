@@ -1,33 +1,151 @@
-<%#homepage of the application %>
-
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-        <style>
-        .buy{
-                margin-top:25%;
-                color:black;
-        }
-        </style>
-</head>
+<style>
 
-<body class="index">
-<ul>
-  <li style="margin-left:20%"><%= link_to 'Renter',new_renter_registration_path, class:"active"%></li>
-  <li style="margin-left:10%">Real Estate Property Application</li>
-  <li style="margin-left:10%">
-  <%if Agent.any?%><%= link_to 'Agent',new_agent_session_path %>
-  <% else %>
-  <%= link_to 'Agent',new_agent_registration_path %>
-  <%end%>
-  </li>
-  <li style="margin-left:13%"><%=link_to "Add company",new_agent_registration_path%></li>
-  </ul>
+body{
+    background-image: image-url('hero2x.jpg');
+}
+.nav-link {
+color:white;
+}
+.navbar-custom {
+    background-color: #253E7E;
+    font-color:white;
+}
+*{
+  margin:0;
+  padding:0;
+  font-family:verdana;
+}
+#abc{
+  width:100%;
+  height:100vh;
+  background-image: url(img2.jpg);
+  background-size: cover;
+}
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: #0005;
+  line-height: 50px;
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  list-style-type: none;
+  display: inline-block;
+  transition: 0.7s all;
+}
+nav ul li:hover{
+  background-color:#088;
+}
+nav ul li a{
+  text-decoration: none;
+  color: #fff;
+  padding: 30px;
+}
+.alignl{
+        color:white;
+        font-size:30px;
+        margin-left:10%;
+        border: none;
+  background-color:darkblue;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  display: inline-block;
+  margin-left:12%;
+}
+.alignr{
+        color:white;
+        font-size:30px;
+        margin-left:50%;
+        border: none;
+  background-color:darkblue;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  display: inline-block;
+
+}
+.alignext{
+        color:white;
+        font-size:30px;
+        margin-left:3%;
+        border: none;
+  background-color:darkblue;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  display: inline-block;
+
+}
+
+.alignext:hover {background-color: #0059b3}
+.alignr:hover {background-color: #0059b3}
+.alignl:hover {background-color: #0059b3}
+.alignl:active {
+  background-color: darkblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+</style>
+<div class="content">
+
+<%= image_tag('prop.jpeg', style: "height:700px; width: 100%;position:absolute;z-index:-1") %>
+
+            <%= link_to "Add company", new_company_path,class:"alignl" ,style:'color:white' %>
+            <%= link_to "New Renter", new_renter_registration_path,class:"alignr" ,style:'color:white' %>
+            <%= link_to "Sign in",dashboard_path,class:"alignext",style:'color:white' %><br><br><br>
+<br>
+<br>
+<span style="z-index:1000;font-size:30px;color:white;padding:20px"><b>Why Buy? Rent one...<br/></b></span>
+<br><br>
+<span style="z-index:1000;font-size:20px;color:white;padding:20px"> <b>Smart Way to find home</b></span>
+</div>
+<div style="font-size:20px;color:white;padding:20px"> Find home easier, save time and money
+
+</div>
+<div style="display:flex">
+<form style="padding:20px">
+
+<input type="search" name="seacrhbar" class="form-control-lg input-sm" placeholder="Enter address, zipcode or street name"> </input>
+<button class="btn btn-danger"> Search home </button>
+
+</form>
+</div>
+<br>
+<br>
+
+<br>
+<br>
+<div class="footer">
+<a style="color:white"><%= image_tag('image01.svg', style: "fill:white;padding:10px") %>
+<%= image_tag('image02.svg', style: "fill:white;padding:10px") %>
+<%= image_tag('image03.svg', style: "fill:white;padding:10px") %>
+<%= image_tag('image04.svg', style: "fill:white;padding:10px") %>
+<br>
+<%= image_tag('image05.svg', style: "fill:white;padding:10px") %>
+<%= image_tag('image06.svg', style: "fill:white;padding:10px") %>
+<br>
+<%= image_tag('image08.svg', style: "fill:white;padding:10px") %>
+<%= image_tag('image09.svg', style: "padding:10px") %></a>
+<div>
 
 
-<p class= buy> Why Buy?  Rent One..</p>
-<p class = buy1> save time <br>  save money</p>
 
-</body>
+
 </html>
+
+
+
+

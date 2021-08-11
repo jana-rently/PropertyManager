@@ -1,3 +1,7 @@
+<html>
+<head>
+
+<style >
 
 
 <!DOCTYPE html>
@@ -28,7 +32,7 @@ border: none;
   margin-left:12%;
 }
 .label,.input{
-  margin-left:4%;
+  margin-left:-75%;
 }
 .input{
   width:90%;
@@ -122,59 +126,43 @@ border: none;
 
 	</style>
 <body>
-<%= render "agents/shared/error_messages", resource: resource %>
 <div style="color:white;margin-left:80%">
-<% if @agent.errors.any? %>
-  <% @agent.errors.messages.each do |message| %>
+<% if @company.errors.any? %>
+  <% @company.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
 <% end %>
 </div>
 <br><br><br>
-<div class="makecenter"> Agent Login</div>
+<div class="makecenter"> Create Company</div>
 <br>
 <div class="codehim-form">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="group"> 
-  
-    <%= f.label :email ,class: "label"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "cm-input"%>
+<%= form_for :@company, url: '/company' do |f| %>
+<div class="form-title">
+     
+
+  <p>
+    <%= f.label :name,class:"label" %><br>
+    <%= f.text_field :companyname,class:"cm-input",placeholder:"Enter your email adress" %>
+  </p>
  
-
-
-    <%= f.label :password ,class: "label"%><br />
-    <%= f.password_field :password, autocomplete: "current-password" ,class: "cm-input"%>
-  
-<br>
-</div>
-  <% if devise_mapping.rememberable? %>
+  <p>
+    <%= f.label :Address,class:"label" %><br>
+    <%= f.text_area :location,class:"cm-input",placeholder:"Enter company address" %>
+  </p>
+  <p>
+    <%= f.label :about,class:"label"%><br>
+    <%= f.text_area :about,class:"cm-input",placeholder:"Description" %>
+  </p>
+  <p>
+    <%= f.label :Year_of_establishment,class:"label",style:'margin-left:1%'%><br>
+    <%= f.number_field :year,class:"cm-input",placeholder:"    Year",style:'width:30%' %>
+  </p>
  
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-  
-  <% end %>
-  <br>
-  <br>
-
-  <div class="actions">
-  <span class="right"> 
-  
-    <%= f.submit "Log in" ,class: "btn-login gr-bg"%>
-	
-     </span>
+  <p>
+    <%= f.submit "Create",class:"btn-login  gr-bg" %>
+  </p>
   </div>
- 
 <% end %>
-<br><br>
- <div class= "center">
-<%= render "agents/shared/links" %>
 </div>
-
-     </div>
-     </body>
-     </html>
-
-
-
-	

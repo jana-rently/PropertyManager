@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_092523) do
+ActiveRecord::Schema.define(version: 2021_08_09_134028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_092523) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_agents_on_company_id"
     t.index ["confirmation_token"], name: "index_agents_on_confirmation_token", unique: true
     t.index ["email"], name: "index_agents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_agents_on_reset_password_token", unique: true
@@ -79,12 +81,13 @@ ActiveRecord::Schema.define(version: 2021_08_07_092523) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "name"
+    t.string "companyname"
     t.string "location"
     t.string "about"
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "flag"
   end
 
   create_table "creditcards", force: :cascade do |t|
@@ -106,10 +109,10 @@ ActiveRecord::Schema.define(version: 2021_08_07_092523) do
     t.integer "bedrooms"
     t.string "description"
     t.integer "flag"
-    t.bigint "agent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["agent_id"], name: "index_properties_on_agent_id"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_properties_on_company_id"
   end
 
   create_table "rentedlists", force: :cascade do |t|
@@ -167,6 +170,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_092523) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "agents", "companies"
   add_foreign_key "approaches", "properties"
   add_foreign_key "approaches", "renters"
+  add_foreign_key "properties", "companies"
 end

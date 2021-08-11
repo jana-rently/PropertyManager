@@ -1,0 +1,49 @@
+
+<style>
+
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  margin-left:20%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:  #f2f2f2;}
+
+</style>
+
+<ul>
+  <li><%= link_to "back", display_prop_path,style:'color:white'%></li>
+   <li style="float:right"><%= link_to "logout", destroy_agent_session_path, method: :delete ,style:'color:white'%></li>
+</ul>
+<div style="text-align:center">Agents list</div>
+<br>
+<table width="50%" cellspacing="0">
+<thead>
+<th width="80">Agent Name</th>
+<th width="10">Email</th>
+<th width="60">Contact</th>
+</thead>
+<tbody>
+<% @agent.each  do |agent|%>
+<tr>
+<td><%=agent.name%></td>
+<td><%=agent.email%></td>
+<td><%=agent.contact%></td>
+</tr>
+<%end%>
+
+</tbody>
+</table>
+
+
+
+
+
+

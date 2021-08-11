@@ -24,5 +24,11 @@ class UserMailer < ApplicationMailer
         @agent=agent
         @property=property
         mail(:to => @renter.email, :subject => "Property is booked")
+      end 
+      #for subagents login credentials
+      def yourlogincredentials(agent, password)
+        @agent=agent
+        @password=password
+        mail(:to => @agent.email, :subject => "Login Credentials")
       end
 end

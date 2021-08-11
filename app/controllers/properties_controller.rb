@@ -38,25 +38,6 @@ class PropertiesController < ApplicationController
       @property=Property.find(@approach.property_id)
       @currentflag=0;
       if @adder.save
-        # getting agent, property, renters object for sending email
-        @agent=current_agent
-        @renter= Renter.find(@approach.renter_id)
-        #flag updation for rented or not
-        @property.update(flag: 1)
-        #sending email to renters that Agent has accepted his approach
-        UserMailer.propertyrented(@renter,@agent,@property).deliver
-
-
-       # sending email to those who are approached as it was allocated for someone except the allocated renter
-       @approach.destroy
-         @check=Approach.where(property_id: @property.id).all
-         @check.each do |obj|
-         @renter=Renter.find(obj.renter_id)
-         @agent=Agent.find(@property.agent_id)
-          UserMailer.propertybooked(@renter,@agent,@property).deliver_now
-         end
-
-
         redirect_to viewapproach_path(@property), notice: "An email has been sent to the respective Renter regarding your acceptance , he will ge back you in short"
       else
       redirect_to viewapproach_path(@property), notice: "Sorry you have already accepted this renter"
@@ -84,11 +65,10 @@ class PropertiesController < ApplicationController
   def create
         @properties=Property.new(property_params)
         @properties.flag=0
-        @agent=current_agent
-        @properties.agent_id = @agent.id
+        @properties.company_id = current_agent.company_id
         if @properties.valid?
              @properties.save
-            redirect_to displayprop_path
+            redirect_to display_prop_path
         else
             flash.now[:messages] = @properties.errors.full_messages
               render :new
@@ -119,7 +99,7 @@ class PropertiesController < ApplicationController
     def destroy
         @property = Property.find(params[:id])
         @property.destroy!
-        redirect_to displayprop_path
+        redirect_to display_prop_path
      end
 
 
@@ -142,7 +122,8 @@ class PropertiesController < ApplicationController
 
       #Removing a property from wishlist
       def remove
-        @wish=Wishlist.find(params[:id])
+        @property=Property.find(params[:id])
+        @wish=Wishlist.where(property_id:@property.id, renter_id:current_renter.id).take
         @wish.destroy
         redirect_to wishlistp_path,notice: "removed successfully"
       end
@@ -151,14 +132,14 @@ class PropertiesController < ApplicationController
       #Removing a property from the Rentedlist and replace the flag to 0 and mail
       #to those who added to wishlit as this property
       def unrent
-        @unrent=Rentedlist.find(params[:id])
+        @property=Property.find(params[:id])
+        @unrent=Rentedlist.where(property_id:@property.id).take
         #flag updation for rented or not
-        @property=Property.find(@unrent.property_id)
         @property.update(flag: 0)
         @check=Wishlist.where(property_id: @property.id).all
         @check.each do |obj|
           @renter=Renter.find(obj.renter_id)
-          @agent=Agent.find(@property.agent_id)
+          @agent=Agent.first
            UserMailer.propertyavailabe(@renter,@agent,@property).deliver_now
         end
         @unrent.destroy
