@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
+	
+	<style >
 body{
 	margin:0;
 	color:#6a6f8c;
 	background:#808080;
 	font:600 16px/18px 'Open Sans',sans-serif;
-  background-color: ; 
+  background-color: #f2f2f2; 
 }
-
-
+.login-wrap{
+  margin-top:4%;
+  min-height:400px;
+}
+.bty{
+  margin-top:10%;
+}
 .btnr{
 border: none;
   background-color: ;
@@ -20,34 +26,120 @@ border: none;
   cursor: pointer;
   color: white;
   display: inline-block;
-  margin-left:20%;
+  margin-left:12%;
 }
-.center{
-	color:white;
+.label,.input{
+  margin-left:4%;
+}
+.input{
+  width:90%;
+}
+.btnr{
+  margin-left:36%;
+}
+.makecenter{
+  text-align:center;
+  color:black;
+  font-size:20px;
+}
+    .codehim-form{
+        max-width: 400px;
+        min-height: 400px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.6);
+        box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        margin:  20px auto 0 auto;
+        padding: 25px;
+        color: #414141;
+            
+    }
+    .cm-input{
+        display: block;
+        box-sizing: border-box;
+        padding: 10px;
+        width: 100%; 
+        margin: 3px auto;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        
+        
+    }
+    .cm-input:focus{
+        outline: 0;
+        border-color: #f9cb81;
+        
+    }
+    .cm-input:invalid{
+        border-color: #e41b17;
+        
+    }
+        
+    .btn-login{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 0;
+        color: #fff;
+        border-radius: 20px;
+        cursor: pointer;
+        
+    }
+    .btn-login:focus{
+        outline: 0;
+    }
+    
+    .btn-login:hover{
+        opacity: 0.8;
+        transition: .3s;
+    }
+    
+    /* Gradient Background */
+    .gr-bg{
+        background: blue;
+        background: linear-gradient(90deg, lightblue 0%, darkblue 55%, white 100%);   
+   */ }
+       /* For, tiele */
+    .form-title{
+        padding: 12px;
+        text-align: center;
+        position: relative;
+    }
+    .form-title h2{
+        color: #5c86e1;
+    }
+    .form-title .user-icon{
+        position: absolute;
+        font-size: 42px;
+        color: #fff;
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        text-align: center;
+        border-radius: 45px;
+        top: -60px;
+        left: -45px;
 }
 
 	</style>
-  
- 
-</head>
 <body>
-<h1 class="heading">Resend unlock instructions</h1>
-
-<div class="login-wrap">
-	<div class="login-form">
-	<div class="sign-in-htm">
+<div style="font-size:10px">
+<%= render "renters/shared/error_messages", resource: resource %></div>
+<br><br>
+<div class="makecenter"> Resend Unlock instructions</div>
+<br>
+<div class="codehim-form">
+ 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
     <div class="group">
-  <br>
-  <%= render "renters/shared/error_messages", resource: resource %>
-  <br>
+  
   <div class="field">
     <%= f.label :email ,class: "label"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"input"%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"cm-input"%>
   </div>
 <br><br>
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" ,class: "btnr"%>
+    <%= f.submit "Resend unlock instructions" ,class: "btn-login gr-bg"%>
   </div>
 <% end %>
 <br>

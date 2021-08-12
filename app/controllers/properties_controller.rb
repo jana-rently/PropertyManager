@@ -87,7 +87,7 @@ class PropertiesController < ApplicationController
     def update
         @property=Property.find(params[:id]) 
         if @property.update(params[:property].permit(:name,  :agent_id,:address, :city, :rent, :bedrooms,:description,images: []))
-          redirect_to displayprop_path
+          redirect_to display_prop_path
         else
           render 'edit'
         end

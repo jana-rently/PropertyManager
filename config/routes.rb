@@ -6,19 +6,18 @@ root to: 'main#index',as: :main_index
 get '/delimage/:id'=>"agent#delimage", as: :delimage
 get '/unrent/:id' => 'properties#unrent' , as: :unrent
 get '/remove/:id' => 'properties#remove' , as: :remove
-get '/addprop/:id' => 'properties#new', as: :addprop
-get '/viewproperty/:id' => 'properties#show', as: :viewproperty
+get '/add_prop/:id' => 'properties#new', as: :addprop
+get '/view_property/:id' => 'properties#show', as: :viewproperty
 get '/display_prop', action: :show, controller: 'agent'
 get '/view_prop', action: :show, controller: 'renter'
-get '/removeagent',action: :removeagents, controller: :agent
-get '/addapproach/:id', action: :addapproach, controller: 'agent', as: :addapproach
-get '/addrentedprop/:id', action: :addrented, controller: 'properties', as: :addrentedprop
-get '/addwishlist/:id', action: :addwish, controller: 'properties', as: :addwishlist
-get '/rentedlistpath', action: :showrented, controller: 'properties', as: :rentedlistp
-get '/wishlistpath', action: :showwish, controller: 'properties', as: :wishlistp
+get '/add_approach/:id', action: :addapproach, controller: 'agent', as: :addapproach
+get '/add_rented_prop/:id', action: :addrented, controller: 'properties', as: :addrentedprop
+get '/add_wish_list/:id', action: :addwish, controller: 'properties', as: :addwishlist
+get '/rented_listpath', action: :showrented, controller: 'properties', as: :rentedlistp
+get '/wishlist_path', action: :showwish, controller: 'properties', as: :wishlistp
 post '/reviews', action: :create, controller: 'review', as: :reviews
-get '/delimageattachment/:id', action: :delete_image_attachment, controller: :agent, method: :delete,as: :delimageattachment 
-get '/viewapproachedlist/:id', action: :viewapproach, controller: 'agent',as: :viewapproach
+get '/del_image_attachment/:id', action: :delete_image_attachment, controller: :agent, method: :delete,as: :delimageattachment 
+get '/view_approached_list/:id', action: :viewapproach, controller: 'agent',as: :viewapproach
 post '/create', action: :create, controller: :company
 get '/dashboard', action: :dashboard, controller: :main
 get '/applied_list', action: :applied, controller: :renter

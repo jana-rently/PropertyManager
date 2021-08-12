@@ -67,7 +67,7 @@ class AgentController < ApplicationController
 
     #deleting an particular image 
     def delete_image_attachment
-        
+
             @image = ActiveStorage::Attachment.find(params[:id])
             @image.purge
             redirect_back(fallback_location: request.referer) 
@@ -85,6 +85,14 @@ class AgentController < ApplicationController
 
       def viewagents
         @agent=Agent.where(company_id:current_agent.company_id).all
+      end
+      def removeagents
+        @agent=Agent.find(params[:id])
+        if @agent.destroy
+          redirect_back(fallback_location: request.referer)
+        else
+          redirect_back(fallback_location: request.referer)
+        end
       end
     #params for the agent creation
     private 

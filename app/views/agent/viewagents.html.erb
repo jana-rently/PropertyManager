@@ -26,9 +26,10 @@ tr:hover {background-color:  #f2f2f2;}
 <br>
 <table width="50%" cellspacing="0">
 <thead>
-<th width="80">Agent Name</th>
-<th width="10">Email</th>
-<th width="60">Contact</th>
+<th width="90">Agent Name</th>
+<th width="60">Email</th>
+<th width="40">Contact</th>
+<th width="40">Type</th>
 </thead>
 <tbody>
 <% @agent.each  do |agent|%>
@@ -36,6 +37,8 @@ tr:hover {background-color:  #f2f2f2;}
 <td><%=agent.name%></td>
 <td><%=agent.email%></td>
 <td><%=agent.contact%></td>
+<td><%=agent.role%></td>
+
 </tr>
 <%end%>
 

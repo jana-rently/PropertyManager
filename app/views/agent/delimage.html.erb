@@ -4,6 +4,7 @@
 <style>
 .br{
   margin-left:4%;
+  margin-top:1%;
 }
 body{
 	margin:0;
@@ -19,10 +20,14 @@ body{
 </head>
 <body>
 
-
+<br>
 <div class="row">
-<div style="text-align:center; color:white;"> Edit/Delete your property images</div>
-<br><br>
+<%= link_to "back", display_prop_path,style:"color:white;margin-left:10%;"%>
+
+<div style="margin-left:40%;color:white"> Edit/Delete your property images</div>
+
+</div>
+<br><br><br>
 
  <%(0...@property.images.count).each do |img| %>
 <%= image_tag(@property.thumbnail(img),class:"br")%>
