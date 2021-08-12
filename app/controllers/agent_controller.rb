@@ -13,9 +13,11 @@ class AgentController < ApplicationController
             password=@agent.email.split('@')[0]
             @agent.password=(password.concat("@A123"))
         end
-        @company=Company.where(flag: nil)
         @agent.save!
+        if @agent.role.eql?('Admin')
+        @company=Company.where(flag: nil).take
         @company.update(flag:1)
+        end
         #sending email to the agents when their account has crerted
         if(@agent.role.eql?('Agent'))
             UserMailer.yourlogincredentials(@agent,@agent.password).deliver_now

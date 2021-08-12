@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
         stored_location_for(resource) || "/display_prop"
     elsif resource.class == Renter
       stored_location_for(resource) || "/view_prop"
+    else
+      super
     end
   end
   
