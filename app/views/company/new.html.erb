@@ -126,7 +126,7 @@ border: none;
 
 	</style>
 <body>
-<div style="color:white;margin-left:80%">
+<div style="color:red;margin-left:80%">
 <% if @company.errors.any? %>
   <% @company.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>
@@ -144,7 +144,7 @@ border: none;
 
   <p>
     <%= f.label :name,class:"label" %><br>
-    <%= f.text_field :companyname,class:"cm-input",placeholder:"Enter your email adress" %>
+    <%= f.text_field :companyname,class:"cm-input",placeholder:"Enter your Company Name" %>
   </p>
  
   <p>

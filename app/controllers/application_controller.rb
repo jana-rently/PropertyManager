@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :null_session
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   
@@ -19,7 +21,10 @@ class ApplicationController < ActionController::Base
       super
     end
   end
-  
+
+  def current_resource_owner
+    Agent.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+  end
 
 
 end

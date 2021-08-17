@@ -117,7 +117,7 @@ border: none;
 
 </head>
 <body>
-<div style="color:black;margin-left:80%">
+<div style="color:red;margin-left:80%">
 <% if @renter.errors.any? %>
   <% @renter.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>

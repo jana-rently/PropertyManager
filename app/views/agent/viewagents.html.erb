@@ -38,6 +38,9 @@ tr:hover {background-color:  #f2f2f2;}
 <td><%=agent.email%></td>
 <td><%=agent.contact%></td>
 <td><%=agent.role%></td>
+<%if agent.role.eql?('Agent')%>
+<td><%= link_to "remove", remove_agent_path(agent),class:"btn btn-danger btn-small"%></td>
+<%end%>
 
 </tr>
 <%end%>

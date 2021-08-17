@@ -117,7 +117,7 @@ border: none;
 
 </head>
 <body>
-<div style="color:black;margin-left:80%">
+<div style="color:red;margin-left:80%">
 <% if @agent.errors.any? %>
   <% @agent.errors.messages.each do |message| %>
     <div class="message"><%= message.last.last.html_safe %></div>
@@ -145,7 +145,7 @@ border: none;
 				
 				<%= f.text_field :contact, class: "cm-input"%>
 
-  				<%= f.label :email , class: "label"%><br/>
+  				<%= f.label :email , class: "label"%>
   				
     			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "cm-input" %>
 

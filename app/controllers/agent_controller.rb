@@ -88,6 +88,7 @@ class AgentController < ApplicationController
       def viewagents
         @agent=Agent.where(company_id:current_agent.company_id).all
       end
+
       def removeagents
         @agent=Agent.find(params[:id])
         if @agent.destroy
@@ -96,6 +97,14 @@ class AgentController < ApplicationController
           redirect_back(fallback_location: request.referer)
         end
       end
+
+
+      def api_token
+      
+      @agent=Agent.find(params[:id])
+      end
+      
+
     #params for the agent creation
     private 
   def agent_params 
