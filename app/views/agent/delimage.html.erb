@@ -9,22 +9,30 @@
 body{
 	margin:0;
 	color:#6a6f8c;
-	background:#808080;
+	background:#999999;
 	font:600 16px/18px 'Open Sans',sans-serif;
   background-color: ; 
 }
 .wt{
   color:white;
 }
+.button{
+  margin-left:10%;
+  padding:1%;
+  border: none;border-radius: 10px;
+  font-size: 14px;display: inline-block;
+ 	background-color: #737373;
+ 	margin-left:49px;color: white;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
 
 <br>
-<div class="row">
-<%= link_to "back", display_prop_path,style:"color:white;margin-left:10%;"%>
+<%= link_to "Back", edit_property_path(@property),class:"button"%>
 
-<div style="margin-left:40%;color:white"> Edit/Delete your property images</div>
+<div style="text-align:center;color:white"> Edit/Delete your property images</div>
 
 </div>
 <br><br><br>
@@ -33,8 +41,6 @@ body{
 <%= image_tag(@property.thumbnail(img),class:"br")%>
  <%= link_to 'Remove', delimageattachment_url(@property.images[img]),class:"wt" %>
  <%end%>
-
-</div>
 
 </body>
 </html>

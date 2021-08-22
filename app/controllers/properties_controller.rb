@@ -16,7 +16,7 @@ class PropertiesController < ApplicationController
       @reviewslist=Review.where(property_id: @property.id).all
       #for approachlist to check if it is already approached by the current renter or not
       @approachflag=0
-      @appr=Approach.where(renter_id:@renter.id).all
+      @appr=Approach.where(renter_id:current_renter.id).all
       #loop through the renters to find whether the propertyis already approached or not
       @appr.each do |prp|
           if prp.property_id == @property.id
@@ -68,7 +68,7 @@ class PropertiesController < ApplicationController
         @properties.company_id = current_agent.company_id
         if @properties.valid?
              @properties.save
-            redirect_to display_prop_path
+            redirect_to displaying_prop_path
         else
             flash.now[:messages] = @properties.errors.full_messages
               render :new
@@ -87,7 +87,7 @@ class PropertiesController < ApplicationController
     def update
         @property=Property.find(params[:id]) 
         if @property.update(params[:property].permit(:name,  :agent_id,:address, :city, :rent, :bedrooms,:description,images: []))
-          redirect_to display_prop_path
+          redirect_to displaying_prop_path
         else
           render 'edit'
         end
@@ -99,7 +99,7 @@ class PropertiesController < ApplicationController
     def destroy
         @property = Property.find(params[:id])
         @property.destroy!
-        redirect_to display_prop_path
+        redirect_to displaying_prop_path
      end
 
 

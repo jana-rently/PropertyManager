@@ -2,10 +2,6 @@
 
 <!DOCTYPE html>
 <head>
-	
-<style>
-
-</style>
 </head>
 <body>
 <ul>
@@ -20,9 +16,9 @@
 
 
 <br>
-<div class="center">Welcome <%=@agent.name%></div>
-<h2 class="center"> Your Properties</h1>
-
+<div class="center">Welcome <%=@agent.name%><br>
+<i>Your Properties</i></div>
+<br><br><br>
 	<div class="login-form"> <div class="sign-in-htm">
 	
 	<% @company.properties.each do |prop|%>
@@ -44,7 +40,7 @@
    <%end%>
    <br><br>
    		<span class="textd">Property Location :</span>
-		<span class="borde"><%= prop.address %></span><br>
+		<span class="borde"><%= prop.address %></span><br><br><br><br>
 		<div><span class="textd" >Rent($)</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;<span class="textd">Bedrooms</span></div>
 		<div class="rent"><%= prop.rent%></div>
 

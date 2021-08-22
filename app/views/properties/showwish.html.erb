@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
 	
-	<style >
+	<style>
 	.btns{
     margin-left:5%;
     background-color:#333333;
@@ -24,7 +23,7 @@
 
   <ul>
   <li><%= link_to "RentedList", rentedlistp_path ,style: 'color: #FFFFFF'%></li>
-  <li><%= link_to "Wishlist",wishlistp_path, style: 'color: #FFFFFF' %></li>
+ <li><%= link_to "ViewAll", view_prop_path ,style: 'color: #FFFFFF'%></li>
   <li><%= link_to "Applied",applied_list_path, style: 'color: #FFFFFF' %></li>
   <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete,style:'color:#FFFFFF' %></li>
   </ul>

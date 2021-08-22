@@ -14,8 +14,8 @@ get '/unrent/:id' => 'properties#unrent' , as: :unrent
 get '/remove/:id' => 'properties#remove' , as: :remove
 get '/add_prop/:id' => 'properties#new', as: :addprop
 get '/view_property/:id' => 'properties#show', as: :viewproperty
-get '/display_prop', action: :show, controller: 'agent'
-get '/view_prop', action: :show, controller: 'renter'
+get '/display_prop', action: :show, controller: 'agent', as: :displaying_prop
+get '/view_prop', action: :show, controller: 'renter',as: :view_prop
 get '/add_approach/:id', action: :addapproach, controller: 'agent', as: :addapproach
 get '/add_rented_prop/:id', action: :addrented, controller: 'properties', as: :addrentedprop
 get '/add_wish_list/:id', action: :addwish, controller: 'properties', as: :addwishlist
@@ -33,8 +33,10 @@ post '/agentcreate', action: :create, controller: :agent
 namespace :api, defaults: {format: 'json'} do
 
   namespace :v1 do
-   resources :properties
+   resources:properties  
+    
    resources :agent
+   get '/applied/:id' => 'agent#applied'
   end
 end
 resources :properties

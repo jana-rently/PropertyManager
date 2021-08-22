@@ -63,6 +63,7 @@ Welcome <%=@renter.name%>
 <%= link_to "Apply  Property", addapproach_path(@property)%></div>
 <%end%>
 <%else%>
+<%if @check != nil%>
 <%if @check.renter_id == current_renter.id %>
 <div class="alignment" >The Agent Approved your request, check your mail and get connect with the agent:</div>
 <%@rentercheckflag=1%>
@@ -72,6 +73,7 @@ Still you can add it to your wishlist</div>
 
 <%= link_to "Add to wishlist", addwishlist_path(@property),class:"sidebtn"%>
 
+<%end%>
 <%end%>
 <%end%>
 <br>

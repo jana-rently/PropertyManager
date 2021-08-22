@@ -10,18 +10,17 @@ class AgentController < ApplicationController
         @agent=Agent.new(agent_params)
         if @agent.role.eql?('Agent')
             @agentflag=1
+ 
             password=@agent.email.split('@')[0]
             @agent.password=(password.concat("@A123"))
+            @agent.save
         end
-        @agent.save!
-        if @agent.role.eql?('Admin')
-        @company=Company.where(flag: nil).take
-        @company.update(flag:1)
-        end
+       
+       
         #sending email to the agents when their account has crerted
         if(@agent.role.eql?('Agent'))
             UserMailer.yourlogincredentials(@agent,@agent.password).deliver_now
-            redirect_to display_prop_path,notice:"Agent created successfully"
+            redirect_to displaying_prop_path,notice:"Agent created successfully"
         end
         if (@agent.role.eql?('Admin'))
         redirect_to new_agent_session_path
@@ -31,7 +30,7 @@ class AgentController < ApplicationController
     #display the properties on agent page
     def show
     @agent=current_agent
-    @company=@agent.company
+    @company=Company.where(id:@agent.company_id).take
   	@properties = @company.properties 
     end
 
@@ -91,11 +90,8 @@ class AgentController < ApplicationController
 
       def removeagents
         @agent=Agent.find(params[:id])
-        if @agent.destroy
-          redirect_back(fallback_location: request.referer)
-        else
-          redirect_back(fallback_location: request.referer)
-        end
+        @agent.destroy
+        redirect_back(fallback_location: request.referer)
       end
 
 
@@ -108,7 +104,7 @@ class AgentController < ApplicationController
     #params for the agent creation
     private 
   def agent_params 
-    params.require(:@agent).permit(:email, :password, :contact, :address, :name, :role,:company_id)
+    params.require(:@agent).permit(:email, :password, :contact, :address, :name, :role,:company_id,:flag)
   end 
   
       

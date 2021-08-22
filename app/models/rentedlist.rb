@@ -12,10 +12,9 @@ class Rentedlist < ApplicationRecord
 
     def send_mail
        # getting agent, property, renters object for sending email
-        @agent=Agent.first
         @renter= Renter.find(self.renter_id)
         @property=Property.find(self.property_id)
-
+        @agent=Agent.where(company_id:@property.company_id).first
         #flag updation for rented or not
         @property.update(flag: 1)
 

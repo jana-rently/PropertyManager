@@ -10,41 +10,10 @@ body{
 	font:600 16px/18px 'Open Sans',sans-serif;
   background-color: #f2f2f2; 
 }
-.login-wrap{
-  margin-top:4%;
-  min-height:400px;
-}
-.bty{
-  margin-top:10%;
-}
-.btnr{
-border: none;
-  background-color: ;
-  padding: 14px 28px;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  color: white;
-  display: inline-block;
-  margin-left:12%;
-}
-.label,.input{
-  margin-left:4%;
-}
-.input{
-  width:90%;
-}
-.btnr{
-  margin-left:36%;
-}
-.makecenter{
-  text-align:center;
-  color:black;
-  font-size:20px;
-}
+
     .codehim-form{
         max-width: 400px;
-        min-height: 400px;
+        min-height: 380px;
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.6);
         box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.4);
@@ -54,72 +23,6 @@ border: none;
         color: #414141;
             
     }
-    .cm-input{
-        display: block;
-        box-sizing: border-box;
-        padding: 10px;
-        width: 100%; 
-        margin: 3px auto;
-        border-radius: 20px;
-        border: 1px solid #ccc;
-        
-        
-    }
-    .cm-input:focus{
-        outline: 0;
-        border-color: #f9cb81;
-        
-    }
-    .cm-input:invalid{
-        border-color: #e41b17;
-        
-    }
-        
-    .btn-login{
-        display: block;
-        width: 100%;
-        padding: 10px;
-        border: 0;
-        color: #fff;
-        border-radius: 20px;
-        cursor: pointer;
-        
-    }
-    .btn-login:focus{
-        outline: 0;
-    }
-    
-    .btn-login:hover{
-        opacity: 0.8;
-        transition: .3s;
-    }
-    
-    /* Gradient Background */
-    .gr-bg{
-        background: blue;
-        background: linear-gradient(90deg, lightblue 0%, darkblue 55%, white 100%);   
-   */ }
-       /* For, tiele */
-    .form-title{
-        padding: 12px;
-        text-align: center;
-        position: relative;
-    }
-    .form-title h2{
-        color: #5c86e1;
-    }
-    .form-title .user-icon{
-        position: absolute;
-        font-size: 42px;
-        color: #fff;
-        width: 90px;
-        height: 90px;
-        line-height: 90px;
-        text-align: center;
-        border-radius: 45px;
-        top: -60px;
-        left: -45px;
-}
 
 	</style>
 <body>
@@ -130,6 +33,7 @@ border: none;
 <div class="codehim-form">
  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 <div class="group">
+<br>
 <br>
   <div class="field">
     <%= f.label :email ,class: "label"%><br />

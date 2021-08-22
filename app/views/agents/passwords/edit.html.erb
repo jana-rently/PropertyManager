@@ -1,25 +1,45 @@
-<h2>Change your password</h2>
-
+<style>
+    .codehim-form{
+        max-width: 400px;
+        min-height: 400px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.6);
+        box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        margin:  20px auto 0 auto;
+        padding: 25px;
+        color: #414141;
+            
+    }  
+</style>
+<div class="makecenter"> Change your password</div>
+<br><br>
+<div class="codehim-form">
+<br>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "agents/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
-
+<div class="group">
+<br>
   <div class="field">
     <%= f.label :password, "New password" %><br />
+    <br>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password",class:"cm-input" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"cm-input" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "Change my password" %>
+    <%= f.submit "Change my password",class: "btn-login gr-bg" %> 
   </div>
 <% end %>
-
+<br>
+<div class="center">
 <%= render "agents/shared/links" %>
+</div>

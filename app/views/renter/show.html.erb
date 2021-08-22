@@ -1,39 +1,39 @@
+<% #Displaying all the properties %>
+
 <!DOCTYPE html>
-
-<html>
-
-<style>
-.center{
-	font-size:20px;
-}
-</style>
-<ul>
+<head>
+</head>
+<body>
+  <ul>
   <li><%= link_to "RentedList", rentedlistp_path ,style: 'color: #FFFFFF'%></li>
   <li><%= link_to "Wishlist",wishlistp_path, style: 'color: #FFFFFF' %></li>
   <li><%= link_to "Applied",applied_list_path, style: 'color: #FFFFFF' %></li>
    <li style="float:right"><%= link_to "logout", destroy_renter_session_path, method: :delete, style: 'color: #FFFFFF' %></li>
 </ul>
 
-<h1 class="center"> Welcome <%=@renter.name%></h1>
 
-
+<br>
+<div class="center">Welcome <%=@renter.name%><br>
+<i>All Properties</i></div>
+<br><br><br>
 	<div class="login-form"> <div class="sign-in-htm">
 	
 	<% @propertylist.each do |prop|%>
 		<div class="clearfix">
 		<div class="box">
-		<button class="btn1">
+	<button class="btn1">
 	<%= link_to "View property", viewproperty_path(prop)%>
 	</button>
+
 		<h2 class="propname"><%= prop.name%><br></h2>
 		
 
 	<%(0...prop.images.count+1 - prop.images.count).each do |img| %>
    <a href=""> <%= image_tag(prop.thumbnail(img),class:"br") %></a>
    <%end%>
-   		<br><br>
+   <br><br>
    		<span class="textd">Property Location :</span>
-		<span class="borde"><%= prop.address %></span><br>
+		<span class="borde"><%= prop.address %></span><br><br><br><br>
 		<div><span class="textd" >Rent($)</span> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;<span class="textd">Bedrooms</span></div>
 		<div class="rent"><%= prop.rent%></div>
 
@@ -45,12 +45,12 @@
 
 		<span class="borde"><%= prop.description%></span>
 			</div>
-		</div>
-		
+		<div>
 		<% end %>
-		</div>
-		</div>
-		</html>
+</div>
+</div>
+</body>
+</html>
 
 
 
