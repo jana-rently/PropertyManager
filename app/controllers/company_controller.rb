@@ -21,6 +21,6 @@ class CompanyController < ApplicationController
     #company parms
     private
     def company_params
-        params.require(:@company).permit(:companyname, :location,:year,:about,:flag)
+        params.require(:@company).permit(:companyname, :location,:year,:about)
     end
 end

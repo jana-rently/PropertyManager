@@ -6,18 +6,19 @@ RSpec.describe Property, type: :model do
     @property = FactoryGirl.create(:property,company_id:@company.id)
   end
 
+  #valid with valid inputs
   context "Validatable with proper input" do
-  it "validation" do
-    expect(@property).to be_valid
-  end
+    it "validation" do
+      expect(@property).to be_valid
+    end
   end
 
+  #invalid with invalid inputs
   context "Validatable with proper input" do
-  it "unvalid due to no name" do
-    newcompany = build(:company, companyname:nil)
-
-    expect(newcompany).to_not be_valid
-  end
+    it "unvalid due to no name" do
+      newcompany = build(:company, companyname:nil)
+      expect(newcompany).to_not be_valid
+    end
   end
 
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 root to: 'main#index',as: :main_index
-
+get '/add_admin/:id' , action: :adminreg, controller: :agent, as: :add_admin
 get '/delimage/:id'=>"agent#delimage", as: :delimage
 get '/unrent/:id' => 'properties#unrent' , as: :unrent
 get '/remove/:id' => 'properties#remove' , as: :remove

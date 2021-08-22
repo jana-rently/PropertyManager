@@ -12,12 +12,14 @@ RSpec.describe Agent, type: :model do
       expect(Devise.mailer.deliveries.count).to eq 1
     end
   end
-  
+
+  #agent is valid with all valid inputs
   context "Validations" do
     it "Agent is valid with valid attributes" do
       expect(@agent).to be_valid
     end
   end
+  #invalid if any one of the input is invalid
 
   context "Invalid" do
     it " Agent is not valid without a name" do 
@@ -25,25 +27,27 @@ RSpec.describe Agent, type: :model do
       expect(newagent).to_not be_valid
     end
 
+    #checks the validation with invalid email to not be valid
     it "Agent is not valid without a valid email" do 
       
       newagent = build(:agent, email: "ksjdlkj")
       expect(newagent).to_not be_valid
     end
 
+    #checks the validation with invalid password and expect it to not be valid
     it "Agent is not valid without a valid password" do 
-     
       newagent = build(:agent, password: "dkjsdkl")
       expect(newagent).to_not be_valid
     end
 
+    #checks the validation with invalid contact number and expect it to be invalid
     it "Agent is not valid without a valid 10 digit numerical contact" do 
       newagent = build(:agent, contact:98989898)
       expect(newagent).to_not be_valid
     end
 
+    #checks the validation with presence of address
     it "Agent Presence of address" do 
-     
       newagent = build(:agent, address:nil)
       expect(newagent).to_not be_valid
     end

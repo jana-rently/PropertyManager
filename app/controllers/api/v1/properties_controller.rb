@@ -1,7 +1,7 @@
 module API
   module V1
     class Api::V1::PropertiesController < ApplicationController
-      before_action :doorkeeper_authorize!
+      before_action :doorkeeper_authorize! 
       respond_to :json
 
       #shows all the property belongs to the specific company of the agent

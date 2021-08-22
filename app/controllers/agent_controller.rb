@@ -20,7 +20,7 @@ class AgentController < ApplicationController
         #sending email to the agents when their account has crerted
         if(@agent.role.eql?('Agent'))
             UserMailer.yourlogincredentials(@agent,@agent.password).deliver_now
-            redirect_to displaying_prop_path,notice:"Agent created successfully"
+            redirect_to displaying_prop_path
         end
         if (@agent.role.eql?('Admin'))
         redirect_to new_agent_session_path
