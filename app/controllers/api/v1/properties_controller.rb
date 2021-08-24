@@ -22,23 +22,24 @@ module API
           @property=Property.find(params[:id])
         rescue Exception => e  
         end    
+        
         if @property.nil?
-            respond_with error: {error: 'No such property with that specified id.'}, status:400
+          respond_with error: {error: 'No such property with that specified id.'}, status:400
         else
           if @property.company_id.eql?(current_agent.company_id)
-          respond_with @property
+            respond_with @property
           else
             respond_with error: {error: 'The specified property doesnot belongs to your company.'}
           end
-
         end
+
       end
 
       #creating the property
       def create
         #only admin agent of the company can able to create the property
         if current_agent.role.eql?('Admin')
-        respond_with Property.create(name: params[:name],company_id: current_agent.company_id,images: params[:images],address: params[:address],rent: params[:rent],bedrooms: params[:bedrooms])
+          respond_with Property.create(name: params[:name],company_id: current_agent.company_id,images: params[:images],address: params[:address],rent: params[:rent],bedrooms: params[:bedrooms])
         else
           render json:{message: :'Unable to process your request,Only Admins can add the property'}
         end
@@ -68,7 +69,7 @@ module API
           end
         else
           render json:{message: :'Unable to process your request,Only Admins can edit the property'}
-          end
+        end
       end
 
       #destroying a specific property of the company
@@ -88,6 +89,7 @@ module API
       def current_agent
         @current_agent ||= Agent.find_by(id: doorkeeper_token[:resource_owner_id])
       end
+      
       def updateparams
         params.require(:property).permit(:name)
       end

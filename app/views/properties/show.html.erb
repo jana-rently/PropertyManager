@@ -55,7 +55,7 @@ Welcome <%=@renter.name%>
 <br>
 <%# if the particular property is not rentd means then we can approach that property%>
 <%@rentercheckflag=0%>
-<% if @property.flag == 0%>
+<% if @property.rented == 0%>
 <%if @approachflag == 1%>
 <div class="alignment" >Your Application has been submitted</div>
 <%else%>

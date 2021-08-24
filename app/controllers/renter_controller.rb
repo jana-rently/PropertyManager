@@ -5,6 +5,7 @@ class RenterController < ApplicationController
     end
     def applied
         @renter=current_renter
-        @propertylist=Approach.where(renter_id: @renter.id).all
+        #@propertylist=Approach.where(renter_id: @renter.id).all
+        @propertylist=@renter.approaches
     end
 end

@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe "Renters", type: :request do
-  require 'rails_helper'
 
   let!(:@renter){
     @renter =FactoryGirl.create(:renter)
@@ -12,7 +11,7 @@ RSpec.describe "Renters", type: :request do
       
       get new_renter_registration_path
 
-      #expect(response.body).to have_tag('form')
+      #expecting the response body to have 
       expect(response.body).to have_tag('form') do
 
         #checking the presence of renter name field

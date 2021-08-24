@@ -26,10 +26,32 @@ RSpec.describe "Api V1 Properties", type: :request do
 		  expect(response).to be_successful
 		end	
 
+	
+
+
         it 'show the particular property should return successful' do
             get '/api/v1/properties/45', headers: { 'Authorization': 'Bearer ' + token.token }
             expect(response).to be_successful
         end
+
+  #Checking the json Response of specific property --show action
+  
+  it 'Shows the particular property' do
+    @expected = { 
+    :id => @property.id,
+    :name => @property.name,
+    :address=> @property.address,
+    :city=> @property.city,
+    :rent => @property.rent,
+    :bedrooms=> @property.bedrooms,
+    :description => @property.description
+    }.to_json
+    get "/api/v1/properties/#{@property.id}",headers: { 'Authorization': 'Bearer ' + token.token }
+    expect(response).to be_successful
+  end   
+
+
+
 
         it 'Delete the property should return successful' do
             delete "/api/v1/properties/#{@property.id}", headers: { 'Authorization': 'Bearer ' + token.token }

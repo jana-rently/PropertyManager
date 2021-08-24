@@ -8,11 +8,21 @@ ActiveAdmin.register Approach do
   # permit_params :property_id, :renter_id, :approachflag
   #
   # or
-  #
+  index do
+    selectable_column
+    id_column
+    column :property_id
+    column :renter_id
+    column :created_at
+    column :updated_at
+    actions
+  end
+  filter :property_id
+  filter :renter_id
   # permit_params do
   #   permitted = [:property_id, :renter_id, :approachflag]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  filter :property
 end

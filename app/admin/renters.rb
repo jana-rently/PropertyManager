@@ -8,7 +8,15 @@ ActiveAdmin.register Renter do
   permit_params :email, :name, :address, :password, :contact
   #
   # or
-  #
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :email
+    column :address
+    column :contact
+    actions
+  end
   # permit_params do
   #   permitted = [:email, :encrypted_password, :name, :address, :contact, :reset_password_token, :reset_password_sent_at, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
@@ -18,4 +26,6 @@ ActiveAdmin.register Renter do
     f.inputs :name,:email,:contact,:password,:address
     actions
     end
+    filter :email
+    filter :name
 end

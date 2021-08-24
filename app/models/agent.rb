@@ -8,7 +8,7 @@ class Agent < ApplicationRecord
   
   #associations         
     belongs_to :company, :optional => true
-    has_many :properties, through: :company, dependent: :destroy
+    has_many :properties, through: :company
       
   #validations
      validates_presence_of :name, :message => "name can't be empty"

@@ -24,20 +24,22 @@ RSpec.describe Agent, type: :model do
   context "Invalid" do
     it " Agent is not valid without a name" do 
       newagent = build(:agent, name:nil)
-      expect(newagent).to_not be_valid
+      expect(newagent).to_not be_valid,"name can't be used"
     end
 
+    
+   
     #checks the validation with invalid email to not be valid
     it "Agent is not valid without a valid email" do 
       
       newagent = build(:agent, email: "ksjdlkj")
-      expect(newagent).to_not be_valid
+      expect(newagent).to_not be_valid,"email should be valid"
     end
 
     #checks the validation with invalid password and expect it to not be valid
     it "Agent is not valid without a valid password" do 
       newagent = build(:agent, password: "dkjsdkl")
-      expect(newagent).to_not be_valid
+      expect(newagent).to_not be_valid,"it should be a valid password"
     end
 
     #checks the validation with invalid contact number and expect it to be invalid

@@ -16,7 +16,7 @@ class Rentedlist < ApplicationRecord
         @property=Property.find(self.property_id)
         @agent=Agent.where(company_id:@property.company_id).first
         #flag updation for rented or not
-        @property.update(flag: 1)
+        @property.update(rented: 1)
 
         #sending email to renters that Agent has accepted his approach
         UserMailer.propertyrented(@renter,@agent,@property).deliver

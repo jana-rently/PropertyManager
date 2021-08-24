@@ -5,7 +5,7 @@ ActiveAdmin.register Company do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :companyname, :location, :about, :year, :flag
+  permit_params :companyname, :location, :about, :year
   #
   # or
   #
@@ -15,8 +15,10 @@ ActiveAdmin.register Company do
   #   permitted
   # end
   form do |f|
-    f.inputs :companyname, :location, :about, :year, :flag
+    f.inputs :companyname, :location, :about, :year
     actions
     end
-  
-end
+    filter :companyname
+    filter :location
+    filter :year
+  end

@@ -11,7 +11,7 @@ class CompanyController < ApplicationController
         if @company.valid?
 
         @company.save
-        redirect_to new_agent_registration_path
+        redirect_to new_agent_registration_path(:company_id => @company.id)
         else
             render 'new', notice:"Name can't be blank"
         end

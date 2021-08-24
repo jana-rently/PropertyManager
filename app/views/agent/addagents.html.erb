@@ -24,15 +24,16 @@ body{
         color: #414141;
             
     }
+	.dd{
+		margin-left:75%;
+		color:red;
+		font-size:12px;
+	}
     
 	</style>
 <body>
-<div style="color:white;margin-left:80%">
-<% if @agent.errors.any? %>
-  <% @agent.errors.messages.each do |message| %>
-    <div class="message"><%= message.last.last.html_safe %></div>
-  <% end %>
-<% end %>
+<div class="dd">
+<%= flash[:messages] %>
 </div>
 <br><br><br>
 <div class="makecenter">Create Agent </div>
@@ -40,26 +41,26 @@ body{
 <div class="codehim-form">
 
 
-    <%= form_for :@agent, url:'/agentcreate'  do |f| %>
+<%= form_for :@agent, url:'/agentcreate'  do |f| %>
   					
-					<%= f.label :Agent_name ,class: "label"%>
-					<%= f.text_field :name, class: "cm-input"%>
-		
-				<%= f.label :Address, class: "label"%>
-				
- 				<%= f.text_area :address, class: "cm-input"%>
+		<%= f.label :Agent_name ,class: "label"%>
+		<%= f.text_field :name, class: "cm-input"%>
 
-				<%= f.label :Contact, class: "label"%> 
+		<%= f.label :Address, class: "label"%>
 				
-				<%= f.text_field :contact, class: "cm-input"%>
+ 		<%= f.text_area :address, class: "cm-input"%>
 
-  				<%= f.label :Email , class: "label"%><br/>
+		<%= f.label :Contact, class: "label"%> 
+				
+		<%= f.text_field :contact, class: "cm-input"%>
+
+  		<%= f.label :Email , class: "label"%><br/>
   				
-    			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "cm-input" %>
+    	<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "cm-input" %>
 			
-            	<%= f.hidden_field :role, value: 'Agent' %>
-                 <%= f.hidden_field :company_id, value: current_agent.company_id %>
-	<br><br> 
+        <%= f.hidden_field :role, value: 'Agent' %>
+        <%= f.hidden_field :company_id, value: current_agent.company_id %>
+		<br><br> 
     	<%= f.submit "Create", class: "btn-login gr-bg" %>
       
 		<% end %>

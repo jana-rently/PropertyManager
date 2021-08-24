@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   #deciding the path after devise signin
   def after_sign_in_path_for(resource)
     if resource.class == Agent
-        stored_location_for(resource) || "/display_prop"
+      stored_location_for(resource) || "/display_prop"
     elsif resource.class == Renter
       stored_location_for(resource) || "/view_prop"
     else

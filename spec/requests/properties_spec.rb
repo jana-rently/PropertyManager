@@ -43,7 +43,7 @@ RSpec.describe "Properties", type: :request do
           with_tag "input", :with => { :name=>"commit", :type => 'submit' }
         end
     end
-	     
+	  
     #validating the addagents page 
     it 'Admin agent can add propeties ' do 
       sign_in @agent

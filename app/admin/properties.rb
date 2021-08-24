@@ -5,7 +5,7 @@ ActiveAdmin.register Property do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :address, :city, :rent, :bedrooms, :description, :flag, :company_id, images: []
+  permit_params :name, :address, :city, :rent, :bedrooms, :description, :rented, :company_id, images: []
   #
   # or
   #
@@ -15,11 +15,16 @@ ActiveAdmin.register Property do
   #   permitted
   # end
   form do |f|
-    f.inputs :name, :address, :city, :rent, :bedrooms, :description, :flag, :company_id
+    f.inputs :name, :address, :city, :rent, :bedrooms, :description, :rented
+      f.inputs "Company" do
+        f.input :company_id, as: :select, collection: Company.all.collect {|company| [company.companyname, company.id] }
+
+      end
     f.input :images, as: :file, input_html: { multiple: true }
     actions
   end
 
     
-  
+  filter :name 
+  filter :company_id
 end

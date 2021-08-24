@@ -39,7 +39,7 @@ tr:hover {background-color:  #f2f2f2;}
 <td><%= @rentername.name%></td>
 <td><%=@rentername.email%></td>
 <td><%=@rentername.contact%></td>
-<% if @property.flag == 1%>
+<% if @property.rented == 1%>
 <% if @rentedp.renter_id == @rentername.id%>
 <td><%="Already Accepted"%></td>
 <%else%>
